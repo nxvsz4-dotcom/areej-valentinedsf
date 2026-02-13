@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For Areej ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: 'Comic Sans MS', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.2);
+}
+
+h1 {
+    color: #ff2e63;
+    font-size: 26px;
+}
+
+button {
+    padding: 12px 25px;
+    margin: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#yesBtn {
+    background-color: #ff2e63;
+    color: white;
+}
+
+#noBtn {
+    background-color: #ccc;
+}
+
+.heart {
+    position: absolute;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    from {transform: translateY(100vh);}
+    to {transform: translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1 id="question">
+        Areej 🥺💖<br><br>
+        Will you be my Valentine?<br>
+        – Your Ullu 🦉💕
+    </h1>
+
+    <button id="yesBtn">Yes 💕</button>
+    <button id="noBtn">No 🙈</button>
+</div>
+
+<script>
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const question = document.getElementById("question");
+
+let size = 18;
+
+const noMessages = [
+    "Are you sure Areej? 🥺",
+    "Think again 😭",
+    "Ullu will cry 🦉💔",
+    "Don't break Ullu's heart 💔",
+    "Last chance princess 👑",
+    "You can't escape love 😌"
+];
+
+let clickCount = 0;
+
+noBtn.addEventListener("click", function() {
+
+    if (clickCount < noMessages.length) {
+        question.innerHTML = noMessages[clickCount];
+    }
+
+    clickCount++;
+
+    size += 10;
+    yesBtn.style.fontSize = size + "px";
+});
+
+yesBtn.addEventListener("click", function() {
+
+    question.innerHTML = "WAITTTT 😳💘<br><br>Areej… are you REALLY sure you want to be Ullu's Valentine forever? 🥹💕";
+
+    noBtn.style.display = "none";
+    yesBtn.innerHTML = "YES ULLU I AM SURE 💍💖";
+
+    yesBtn.onclick = function() {
+        question.innerHTML = "YAYYYYY 😭💞<br><br>Areej + Ullu = Forever ♾️💖<br><br>You just made me the happiest Ullu alive 🦉💕✨";
+        yesBtn.style.display = "none";
+    };
+});
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 500);
+
+</script>
+
+</body>
+</html>
